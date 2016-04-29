@@ -44,6 +44,24 @@ class TrafficTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($this->router->route('GET', '/foo/bar'));
     }
 
+    public function testMatchWildCardMatches()
+    {
+        $this->router->add('*', '/foo/bar');
+        $this->assertTrue($this->router->route('OPTIONS', '/foo/bar'));
+    }
+
+    public function testRegexMethodMatches()
+    {
+        $this->router->add('(GET|POST)', '/foo/bar');
+        $this->assertTrue($this->router->route('POST', '/foo/bar'));
+    }
+
+    public function testRegexMethodNoMatch()
+    {
+        $this->router->add('(GET|HEAD)', '/foo/bar');
+        $this->assertFalse($this->router->route('POST', '/foo/bar'));
+    }
+
     public function testOnlyFirstMatchingRouteInvoked()
     {
         $this->router->get('/foo/{first:[a-z]+}', $this->flag('first'))
