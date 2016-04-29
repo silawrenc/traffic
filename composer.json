@@ -1,0 +1,24 @@
+{
+    "name": "silawrenc/traffic",
+    "type": "library",
+    "description": "A tiny, speedy regex powered router",
+    "keywords": ["router"],
+    "license": "ISC",
+    "authors": [
+        {
+            "name": "Simon Lawrence",
+            "email": "silawrenc@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "silawrenc\\Traffic\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=7.0.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~5.3"
+    }
+}
